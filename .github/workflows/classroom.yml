@@ -1,0 +1,467 @@
+name: Autograding Tests
+
+on:
+  push:
+  repository_dispatch:
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyllist
+
+      # ---------- Individual Tests (Deque with dllist) ----------
+
+      - name: Instantiation
+        id: instantiation
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Instantiation
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_instantiation
+          timeout: 10
+          max-score: 1
+
+      - name: Initial_Size
+        id: initial_size
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Initial_Size
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_initial_size
+          timeout: 10
+          max-score: 1
+
+      - name: Has_Doubly_Linked_List_Internal
+        id: has_dll_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Has_Doubly_Linked_List_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_has_doubly_linked_list_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Left_One_Internal
+        id: enqueue_left_one_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Left_One_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_left_one_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Left_Two_Internal
+        id: enqueue_left_two_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Left_Two_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_left_two_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Left_Three_Internal
+        id: enqueue_left_three_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Left_Three_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_left_three_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Right_One_Internal
+        id: enqueue_right_one_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Right_One_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_right_one_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Right_Two_Internal
+        id: enqueue_right_two_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Right_Two_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_right_two_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Right_Three_Internal
+        id: enqueue_right_three_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Right_Three_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_right_three_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Left_One
+        id: dequeue_left_one
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Left_One
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_left_one
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Left_One_Internal
+        id: dequeue_left_one_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Left_One_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_left_one_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Left_Two
+        id: dequeue_left_two
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Left_Two
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_left_two
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Left_Two_Internal
+        id: dequeue_left_two_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Left_Two_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_left_two_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Left_Three
+        id: dequeue_left_three
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Left_Three
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_left_three
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Left_Three_Internal
+        id: dequeue_left_three_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Left_Three_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_left_three_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Right_One
+        id: dequeue_right_one
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Right_One
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_right_one
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Right_One_Internal
+        id: dequeue_right_one_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Right_One_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_right_one_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Right_Two
+        id: dequeue_right_two
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Right_Two
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_right_two
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Right_Two_Internal
+        id: dequeue_right_two_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Right_Two_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_right_two_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Right_Three
+        id: dequeue_right_three
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Right_Three
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_right_three
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Right_Three_Internal
+        id: dequeue_right_three_internal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Right_Three_Internal
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_right_three_internal
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Left_Dequeue_Right
+        id: enqueue_left_dequeue_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Left_Dequeue_Right
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_left_dequeue_right
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Right_Dequeue_Left
+        id: enqueue_right_dequeue_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Right_Dequeue_Left
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_right_dequeue_left
+          timeout: 10
+          max-score: 1
+
+      - name: Empty
+        id: empty
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Empty
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_empty
+          timeout: 10
+          max-score: 1
+
+      - name: Not_Empty_Left
+        id: not_empty_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Not_Empty_Left
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_not_empty_left
+          timeout: 10
+          max-score: 1
+
+      - name: Not_Empty_Right
+        id: not_empty_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Not_Empty_Right
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_not_empty_right
+          timeout: 10
+          max-score: 1
+
+      - name: Empty_After_Dequeue_Left
+        id: empty_after_dequeue_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Empty_After_Dequeue_Left
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_empty_after_dequeue_left
+          timeout: 10
+          max-score: 1
+
+      - name: Empty_After_Dequeue_Right
+        id: empty_after_dequeue_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Empty_After_Dequeue_Right
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_empty_after_dequeue_right
+          timeout: 10
+          max-score: 1
+
+      - name: Not_Empty_Multiple_Left
+        id: not_empty_multiple_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Not_Empty_Multiple_Left
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_not_empty_multiple_left
+          timeout: 10
+          max-score: 1
+
+      - name: Not_Empty_Multiple_Right
+        id: not_empty_multiple_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Not_Empty_Multiple_Right
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_not_empty_multiple_right
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Right_From_Empty
+        id: dequeue_right_from_empty
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Right_From_Empty
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_right_from_an_empty_deque
+          timeout: 10
+          max-score: 1
+
+      - name: Dequeue_Left_From_Empty
+        id: dequeue_left_from_empty
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Left_From_Empty
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_left_from_an_empty_deque
+          timeout: 10
+          max-score: 1
+
+      - name: Size_After_Enqueue_Right
+        id: size_after_enqueue_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Size_After_Enqueue_Right
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_size_after_enqueue_right
+          timeout: 10
+          max-score: 1
+
+      - name: Size_After_Enqueue_Left
+        id: size_after_enqueue_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Size_After_Enqueue_Left
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_size_after_enqueue_left
+          timeout: 10
+          max-score: 1
+
+      - name: Size_After_Dequeue_Right
+        id: size_after_dequeue_right
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Size_After_Dequeue_Right
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_size_after_dequeue_right
+          timeout: 10
+          max-score: 1
+
+      - name: Size_After_Dequeue_Left
+        id: size_after_dequeue_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Size_After_Dequeue_Left
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_size_after_dequeue_left
+          timeout: 10
+          max-score: 1
+
+      - name: Size_After_Dequeue_Right_Or_Left
+        id: size_after_dequeue_right_or_left
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Size_After_Dequeue_Right_Or_Left
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_size_after_dequeue_right_or_left
+          timeout: 10
+          max-score: 1
+
+      - name: Enqueue_Left_vs_Right_Efficiency
+        id: enqueue_left_vs_right_efficiency
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Enqueue_Left_vs_Right_Efficiency
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_enqueue_left_vs_right_efficiency
+          timeout: 180
+          max-score: 1
+
+      - name: Dequeue_Left_vs_Right_Efficiency
+        id: dequeue_left_vs_right_efficiency
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Dequeue_Left_vs_Right_Efficiency
+          setup-command: ''
+          command: python3 -m unittest -v tests_autograder.tests_all.TestDeque.test_dequeue_left_vs_right_efficiency
+          timeout: 180
+          max-score: 1
+
+      # ---------- Reporter ----------
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          INSTANTIATION_RESULTS: "${{ steps.instantiation.outputs.result }}"
+          INITIAL_SIZE_RESULTS: "${{ steps.initial_size.outputs.result }}"
+          HAS_DLL_INTERNAL_RESULTS: "${{ steps.has_dll_internal.outputs.result }}"
+          ENQUEUE_LEFT_ONE_INTERNAL_RESULTS: "${{ steps.enqueue_left_one_internal.outputs.result }}"
+          ENQUEUE_LEFT_TWO_INTERNAL_RESULTS: "${{ steps.enqueue_left_two_internal.outputs.result }}"
+          ENQUEUE_LEFT_THREE_INTERNAL_RESULTS: "${{ steps.enqueue_left_three_internal.outputs.result }}"
+          ENQUEUE_RIGHT_ONE_INTERNAL_RESULTS: "${{ steps.enqueue_right_one_internal.outputs.result }}"
+          ENQUEUE_RIGHT_TWO_INTERNAL_RESULTS: "${{ steps.enqueue_right_two_internal.outputs.result }}"
+          ENQUEUE_RIGHT_THREE_INTERNAL_RESULTS: "${{ steps.enqueue_right_three_internal.outputs.result }}"
+          DEQUEUE_LEFT_ONE_RESULTS: "${{ steps.dequeue_left_one.outputs.result }}"
+          DEQUEUE_LEFT_ONE_INTERNAL_RESULTS: "${{ steps.dequeue_left_one_internal.outputs.result }}"
+          DEQUEUE_LEFT_TWO_RESULTS: "${{ steps.dequeue_left_two.outputs.result }}"
+          DEQUEUE_LEFT_TWO_INTERNAL_RESULTS: "${{ steps.dequeue_left_two_internal.outputs.result }}"
+          DEQUEUE_LEFT_THREE_RESULTS: "${{ steps.dequeue_left_three.outputs.result }}"
+          DEQUEUE_LEFT_THREE_INTERNAL_RESULTS: "${{ steps.dequeue_left_three_internal.outputs.result }}"
+          DEQUEUE_RIGHT_ONE_RESULTS: "${{ steps.dequeue_right_one.outputs.result }}"
+          DEQUEUE_RIGHT_ONE_INTERNAL_RESULTS: "${{ steps.dequeue_right_one_internal.outputs.result }}"
+          DEQUEUE_RIGHT_TWO_RESULTS: "${{ steps.dequeue_right_two.outputs.result }}"
+          DEQUEUE_RIGHT_TWO_INTERNAL_RESULTS: "${{ steps.dequeue_right_two_internal.outputs.result }}"
+          DEQUEUE_RIGHT_THREE_RESULTS: "${{ steps.dequeue_right_three.outputs.result }}"
+          DEQUEUE_RIGHT_THREE_INTERNAL_RESULTS: "${{ steps.dequeue_right_three_internal.outputs.result }}"
+          ENQUEUE_LEFT_DEQUEUE_RIGHT_RESULTS: "${{ steps.enqueue_left_dequeue_right.outputs.result }}"
+          ENQUEUE_RIGHT_DEQUEUE_LEFT_RESULTS: "${{ steps.enqueue_right_dequeue_left.outputs.result }}"
+          EMPTY_RESULTS: "${{ steps.empty.outputs.result }}"
+          NOT_EMPTY_LEFT_RESULTS: "${{ steps.not_empty_left.outputs.result }}"
+          NOT_EMPTY_RIGHT_RESULTS: "${{ steps.not_empty_right.outputs.result }}"
+          EMPTY_AFTER_DEQUEUE_LEFT_RESULTS: "${{ steps.empty_after_dequeue_left.outputs.result }}"
+          EMPTY_AFTER_DEQUEUE_RIGHT_RESULTS: "${{ steps.empty_after_dequeue_right.outputs.result }}"
+          NOT_EMPTY_MULTIPLE_LEFT_RESULTS: "${{ steps.not_empty_multiple_left.outputs.result }}"
+          NOT_EMPTY_MULTIPLE_RIGHT_RESULTS: "${{ steps.not_empty_multiple_right.outputs.result }}"
+          DEQUEUE_RIGHT_FROM_EMPTY_RESULTS: "${{ steps.dequeue_right_from_empty.outputs.result }}"
+          DEQUEUE_LEFT_FROM_EMPTY_RESULTS: "${{ steps.dequeue_left_from_empty.outputs.result }}"
+          SIZE_AFTER_ENQUEUE_RIGHT_RESULTS: "${{ steps.size_after_enqueue_right.outputs.result }}"
+          SIZE_AFTER_ENQUEUE_LEFT_RESULTS: "${{ steps.size_after_enqueue_left.outputs.result }}"
+          SIZE_AFTER_DEQUEUE_RIGHT_RESULTS: "${{ steps.size_after_dequeue_right.outputs.result }}"
+          SIZE_AFTER_DEQUEUE_LEFT_RESULTS: "${{ steps.size_after_dequeue_left.outputs.result }}"
+          SIZE_AFTER_DEQUEUE_RIGHT_OR_LEFT_RESULTS: "${{ steps.size_after_dequeue_right_or_left.outputs.result }}"
+          ENQUEUE_LEFT_VS_RIGHT_EFFICIENCY_RESULTS: "${{ steps.enqueue_left_vs_right_efficiency.outputs.result }}"
+          DEQUEUE_LEFT_VS_RIGHT_EFFICIENCY_RESULTS: "${{ steps.dequeue_left_vs_right_efficiency.outputs.result }}"
+        with:
+          runners: instantiation,initial_size,has_dll_internal,enqueue_left_one_internal,enqueue_left_two_internal,enqueue_left_three_internal,enqueue_right_one_internal,enqueue_right_two_internal,enqueue_right_three_internal,dequeue_left_one,dequeue_left_one_internal,dequeue_left_two,dequeue_left_two_internal,dequeue_left_three,dequeue_left_three_internal,dequeue_right_one,dequeue_right_one_internal,dequeue_right_two,dequeue_right_two_internal,dequeue_right_three,dequeue_right_three_internal,enqueue_left_dequeue_right,enqueue_right_dequeue_left,empty,not_empty_left,not_empty_right,empty_after_dequeue_left,empty_after_dequeue_right,not_empty_multiple_left,not_empty_multiple_right,dequeue_right_from_empty,dequeue_left_from_empty,size_after_enqueue_right,size_after_enqueue_left,size_after_dequeue_right,size_after_dequeue_left,size_after_dequeue_right_or_left,enqueue_left_vs_right_efficiency,dequeue_left_vs_right_efficiency
